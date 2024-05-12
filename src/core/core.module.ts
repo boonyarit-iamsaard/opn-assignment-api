@@ -1,11 +1,13 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
+import { AuthModule } from '../features/auth/auth.module';
 import { UsersModule } from '../features/users/users.module';
 import { AppModule } from './app/app.module';
 
 @Module({
   imports: [
+    AuthModule,
     AppModule,
     ConfigModule.forRoot({
       isGlobal: true,
