@@ -5,19 +5,6 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserEntity } from './entities/user.entity';
 
-export class BaseError extends Error {
-  constructor(
-    public status: number,
-    message: string,
-  ) {
-    super(message);
-  }
-}
-
-export class Result<T> {
-  constructor(public data: T) {}
-}
-
 @Injectable()
 export class UsersService {
   private users: UserEntity[] = [];
