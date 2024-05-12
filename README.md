@@ -1,73 +1,87 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# RESTful API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Assignment
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Our commerce services need an interface where it bridges between frontend and data source, so we decided to have a RESTful API where it supports bellowing pages.
 
-## Description
+### Pages
+- **Registration page** is where new member can start their membership.
+  - Fields submitted: email, password, name, date of birth, gender and address, subscribe to newsletter.
+- **Profile page** is where we can see their information.
+  - Fields to display: email, name, age, gender, address and subscribe to newsletter.
+- **Edit profile page** is where members can update their information.
+  - Fields allowed to edit: date of birth, gender, address and subscribe to newsletter.
+  - Members can delete their account regarding PDPA policy.
+- **Password change page** is where members can set their new password by entering current password and following with new password and confirmation.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+### Requirements
+- Your program will serve a RESTful API.
+- Your API will be called via an HTTP client, e.g.: Postman, curl.
+- No need to connect to the database.
+- Authentication should be verified from header "Authorization" with mock value e.g.: `Authorization: Bearer faketoken_user1`
+- Validation have additional score.
 
-## Installation
+## Prerequisite
+- Required Node.js 18.x or later.
+- Required pnpm 8.9.x or later.
+- If you don't want to use pnpm, you can use npm or yarn but make sure to remove `pnpm-lock.yaml` file and the `"packageManager"` field from `package.json` file.
 
-```bash
-$ pnpm install
+## Setup
+
+Run the following command to install dependencies.
+
+```sh
+pnpm install
+
+# or npm install or yarn install
 ```
 
-## Running the app
+Copy content of `.env.example` to `.env` file.
 
-```bash
-# development
-$ pnpm run start
+```sh
+cp .env.example .env
+```
+- `ACCESS_TOKEN_SECRET` is used to sign the JWT token, you can set any value.
+- `ACCESS_TOKEN_EXPIRES_IN` is used to set the expiry of the JWT token, more information can be found [here](https://github.com/vercel/ms).
 
-# watch mode
-$ pnpm run start:dev
 
-# production mode
-$ pnpm run start:prod
+## Run
+
+Run the following command to start the server, it will start the server at `http://localhost:3000`.
+
+```sh
+pnpm start:dev
+
+# or npm run start:dev or yarn start:dev
 ```
 
 ## Test
 
-```bash
-# unit tests
-$ pnpm run test
+Run the following command to run test.
 
-# e2e tests
-$ pnpm run test:e2e
+```sh
+pnpm test
 
-# test coverage
-$ pnpm run test:cov
+# or npm run test or yarn test
 ```
 
-## Support
+## Postman Collection
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Postman collection is available at `./postman` directory.
 
-## Stay in touch
+## Areas of Improvement
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- [ ] Improve validation error message
+- [ ] Remove duplicate code
 
-## License
+## Roadmap
 
-Nest is [MIT licensed](LICENSE).
+- [ ] Add refresh token mechanism and httpOnly cookie
+- [ ] Add custom response
+- [ ] Add logger
+- [ ] Add global error handler
+- [ ] Add swagger documentation
+- [ ] Add versioning
+- [ ] Add more test cases
+- [ ] Add docker and database integration
+- [ ] Add CI/CD pipeline
