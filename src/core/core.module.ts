@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
+import { UsersModule } from '../features/users/users.module';
 import { AppModule } from './app/app.module';
 
 @Module({
@@ -14,6 +15,7 @@ import { AppModule } from './app/app.module';
         ACCESS_TOKEN_EXPIRES_IN: Joi.string().required(),
       }),
     }),
+    UsersModule,
   ],
 })
 export class CoreModule {}
